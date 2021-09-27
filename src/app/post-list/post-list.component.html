@@ -1,0 +1,39 @@
+<ul>
+<li [ngClass]="{'list-group-item': true,
+                'list-group-item-success': post.loveIts > 0,
+                'list-group-item-danger': post.loveIts < 0}"
+    *ngFor="let post of posts"
+    >
+    
+    <div class="row">
+        <div class="col-sm-9">
+            <h1>{{post.title}} {{post.loveIts}}</h1>
+        </div>
+        <div class="col-sm-3">
+            {{post.created_at | date: 'EEEE, d,MMMM, y'}}
+        </div>
+    </div>
+    
+    
+    <div class="row">
+        <div class="col">
+            {{post.content}}
+        </div>
+    </div>
+    
+    <div class="row">
+        <div class="col-sm-9">
+            <div class='d-grid gap-2 d-md-block'>
+                <button class="btn btn-success" 
+                    (click)="incLoveIt(post,+1)" type="button">Love It</button>
+                <button class="btn btn-danger ms-2" 
+                    (click)="incLoveIt(post,-1)" type="button">Don't Love It</button>  
+            </div>
+        </div>
+        <div class="col-sm-3">
+            <button class="btn btn-light" 
+                    (click)="delete(post)" type="button">Supprimer post</button>
+        </div>
+    </div>
+</li>
+</ul>
